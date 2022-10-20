@@ -38,6 +38,6 @@ def update_store_item(request, item_id):
     return render(request,"update_store_item.html", context)
 
 def delete_store_item(request, item_id):
-    store_item = StoreItem(item_id)
-    store_item.delete(store_item)
+    store_item = models.StoreItem.objects.get(id=item_id)
+    store_item.delete()
     return redirect("store-item-list")
